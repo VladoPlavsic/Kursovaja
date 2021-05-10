@@ -55,7 +55,7 @@ Route::add('/signin', function(){
 
 Route::add("/logout", function(){
     setcookie("jwt", false);
-    header("Location: http://localhost:8080/home");
+    header("Location: ".getenv('SITE_URL')."/home");
     die();
 }, 'get');
 
@@ -76,7 +76,7 @@ Route::add("/articles&orderNum=([0-9]*)", function($orderNum){
 Route::add("/availableArticles", function(){
     if(WebToken::checkIfAdmin()){
         Database::executeQuery("call delete_availableArticle(".$_GET["orderNumber"].")");
-        header("Location: http://localhost:8080/articles");
+        header("Location: ".getenv('SITE_URL')."/articles");
         die();
     }
     else
@@ -86,7 +86,7 @@ Route::add("/availableArticles", function(){
 Route::add("/availableArticles", function(){
     if(WebToken::checkIfAdmin()){
         Database::executeQuery("call add_availableArticle(".$_POST['orderNumber'].",'".$_POST['articleName']."')");
-        header("Location: http://localhost:8080/articles");
+        header("Location: ".getenv('SITE_URL')."/articles");
         die();
     }
     else
@@ -101,7 +101,7 @@ Route::add("/editArticle", function(){
         }else{
             Database::executeQuery("call add_article(".$_POST['orderNum'].", '".$_POST['editor']."')");
         }
-        header("Location: http://localhost:8080/articles&orderNum=".$_POST['orderNum']."");
+        header("Location: ".getenv('SITE_URL')."/articles&orderNum=".$_POST['orderNum']."");
         die();
     }
     else

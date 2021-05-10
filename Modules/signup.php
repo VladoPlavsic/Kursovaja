@@ -7,7 +7,7 @@ $passwordRe = $_POST['passwordRe'];
 
 if ($password != $passwordRe){
     setcookie("reason", "Паролы не совпадают!");
-    header("Location: http://localhost:8080/sign");
+    header("Location: ".getenv('SITE_URL')."/sign");
     die();
 }
 
@@ -26,15 +26,15 @@ if (!$taken){
         "username" => $username,
         "email" => $email
     )));
-    header("Location: http://localhost:8080/home");
+    header("Location: ".getenv('SITE_URL')."/home");
     die();
 }elseif ($taken == 1){
     setcookie("reason", "Email уже используется", time() + 60*2);
-    header("Location: http://localhost:8080/sign");
+    header("Location: ".getenv('SITE_URL')."/sign");
     die();
 }elseif ($taken == 2){
     setcookie("reason", "Username уже используется", time() + 60*2);
-    header("Location: http://localhost:8080/sign");
+    header("Location: ".getenv('SITE_URL')."/sign");
     die();
 }else{
     

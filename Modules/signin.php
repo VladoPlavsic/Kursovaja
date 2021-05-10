@@ -15,11 +15,11 @@ if(password_verify($password, $user["password"])){
         "username" => $user["username"],
         "email" => $user["email"]
     )));
-    header("Location: http://localhost:8080/articles");
+    header("Location: ".getenv('SITE_URL')."/articles");
     die();
 }else{
     setcookie("reason", "Не верные данные", time() + 60*2);
-    header("Location: http://localhost:8080/sign");
+    header("Location: ".getenv('SITE_URL')."/sign");
     die();
 }
 

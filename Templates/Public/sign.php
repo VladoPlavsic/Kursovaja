@@ -1,5 +1,5 @@
 <?php if(WebToken::checkToken()){
-	header("Location: http://localhost:8080/");
+	header("Location: ".getenv('SITE_URL')."/");
 	die();
 }?>
 <?php include_once Route::getStaticFilesFolder()."/Public/errors.php" ?>
