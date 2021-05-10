@@ -17,7 +17,7 @@ $response = Database::executeQuery("SELECT check_if_user_exists('".$username."',
 $taken = mysqli_fetch_array($response)[0];
 
 if (!$taken){
-    $query = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
+    $query = "call add_user('$username', '$password', '$email')";
     Database::executeQuery($query);
     setcookie("jwt", WebToken::createToken(array(
         "aud" => "audience",

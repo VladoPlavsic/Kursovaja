@@ -23,5 +23,13 @@ class WebToken{
         return mysqli_fetch_array($response)[0];
     }
 
+    public static function checkIfAdmin(){
+        if(!isset($_COOKIE["jwt"]))
+            return false;
+        $payload = self::decodeToken($_COOKIE["jwt"]);
+        $response = Database::executeQuery("call check_if_admin('".$payload['username']."')");
+        return mysqli_fetch_array($response)[0];
+    }
+
 }
 ?>

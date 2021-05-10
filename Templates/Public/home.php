@@ -1,4 +1,4 @@
-<?php include_once Route::getStaticFilesFolder()."/Public/base.php" ?>
+<?php include_once Route::getStaticFilesFolder()."/Shared/base.php" ?>
 
 <style>
 .container {

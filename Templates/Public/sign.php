@@ -60,5 +60,5 @@
 </script>
 
 <style> 
-    <?php include_once Route::$staticFilesFolder."/styles/sign.css" ?>
+    <?php include_once Route::getStaticFilesFolder()."/styles/sign.css" ?>
 </style>

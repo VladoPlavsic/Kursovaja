@@ -4,8 +4,17 @@ class Route{
     private static $routes = Array();
     private static $pathNotFound = null;
     private static $methodNotAllowed = null;
-    public static $staticFilesFolder = null;
-    public static $moduleFilesFolder = null;
+    private static $staticFilesFolder = null;
+    private static $moduleFilesFolder = null;
+    private static $rootFilesFolder = null;
+
+    public static function setRootFilesFolder($folder){
+        self::$rootFilesFolder = $folder;
+    }
+
+    public static function getRootFilesFolder(){
+        return self::$rootFilesFolder;
+    }
 
     public static function setStaticFilesFolder($folder){
         self::$staticFilesFolder = $folder;

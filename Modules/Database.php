@@ -32,5 +32,12 @@ class Database{
         self::disconnect();
         return $response;
     }
+
+    public static function getArticleContent($orderNum){
+        self::connect();
+        $response = self::executeQuery("call get_article(".$orderNum.")");
+        self::disconnect();
+        return mysqli_fetch_array($response)[1];
+    }
 }
 ?>

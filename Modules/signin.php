@@ -12,10 +12,10 @@ if(password_verify($password, $user["password"])){
         "aud" => "audience",
         "iat" => time(),
         "exp" => time() + 60*60*24,
-        "username" => $user["usernane"],
+        "username" => $user["username"],
         "email" => $user["email"]
     )));
-    header("Location: http://localhost:8080/home");
+    header("Location: http://localhost:8080/articles");
     die();
 }else{
     setcookie("reason", "Не верные данные", time() + 60*2);

@@ -1,0 +1,42 @@
+.body{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+}
+
+button{
+    align-self: center;
+}
+
+input {
+    align-self: center;
+    max-width: 80px;
+    margin-top: 20px;
+}
+
+form {
+    align-self: center;
+}
+
+#articleEditor{
+    margin-top: 20px;
+    align-self: center;
+    max-width: 80vw;
+    min-width: 80vw;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: flex;
+    flex-direction: column;
+}
+
+.article{
+    align-self: center;
+}
