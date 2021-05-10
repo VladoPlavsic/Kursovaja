@@ -5,7 +5,7 @@ $errors = array();
 // Incldue environment
 include(__DIR__.'/../Modules/DotEnv.php');
 use DevCoder\DotEnv;
-$env = new DotEnv(__DIR__ . '/../.env');
+$env = new DotEnv('.env');
 $env->load();
 
 // Include router class

@@ -4,13 +4,12 @@ CREATE TABLE users (
     password TEXT NOT NULL,
     email TEXT NOT NULL,
     is_admin BOOLEAN NOT NULL DEFAULT false, 
-    UNIQUE KEY (username),
-    UNIQUE KEY (email)
+    UNIQUE KEY (username)
 );
 
 /**/
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE add_user(i_username VARCHAR(30), i_password TEXT, i_email TEXT)
+CREATE PROCEDURE add_user(i_username VARCHAR(30), i_password TEXT, i_email TEXT)
 DETERMINISTIC
 BEGIN
 INSERT INTO users (username, password, email) VALUES (i_username, i_password, i_email);
@@ -19,7 +18,7 @@ DELIMITER ;
 
 /**/
 DELIMITER $$
-CREATE OR REPLACE FUNCTION check_if_user_exists(i_username VARCHAR(30), i_email TEXT)
+CREATE FUNCTION check_if_user_exists(i_username VARCHAR(30), i_email TEXT)
 RETURNS INT
 DETERMINISTIC
 BEGIN
@@ -45,9 +44,10 @@ CREATE TABLE availableArticles (
     UNIQUE KEY (orderNum)
 );
 
+
 /**/
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE check_if_admin(i_username VARCHAR(30))
+CREATE PROCEDURE check_if_admin(i_username VARCHAR(30))
 DETERMINISTIC
 BEGIN
 SELECT is_admin FROM users WHERE username = i_username;
