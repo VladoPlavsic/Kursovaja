@@ -65,7 +65,10 @@ Route::add('/articles',function(){
 
 // Get article
 Route::add("/articles&orderNum=([0-9]*)", function($orderNum){
-    include_once Route::getStaticFilesFolder().'/Public/article.php';
+    if(!mysqli_fetch_array(Database::executeQuery("SELECT check_article_exists(".$orderNum.")"))[0])
+        echo "404";
+    else
+        include_once Route::getStaticFilesFolder().'/Public/article.php';
 }, 'get');
 
 Route::add("/availableArticles", function(){
