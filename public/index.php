@@ -5,7 +5,7 @@ $errors = array();
 // Incldue environment
 include(__DIR__.'/../Modules/DotEnv.php');
 use DevCoder\DotEnv;
-$env_path = __DIR__ . '/../.env';
+$env_path = __DIR__ . '/env';
 $env = new DotEnv($env_path);
 $env->load();
 
