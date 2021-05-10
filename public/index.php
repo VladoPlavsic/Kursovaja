@@ -4,10 +4,9 @@ $errors = array();
 
 // Incldue environment
 include(__DIR__.'/../Modules/DotEnv.php');
-use DevCoder\DotEnv;
-$env_path = __DIR__ . '/env';
-$env = new DotEnv($env_path);
-$env->load();
+// use DevCoder\DotEnv;
+// $env = new DotEnv(__DIR__ . '/../.env');
+// $env->load();
 
 // Include router class
 include(__DIR__.'/../Modules/Router.php');
