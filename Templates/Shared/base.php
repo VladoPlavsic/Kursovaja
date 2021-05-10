@@ -3,7 +3,7 @@
 	<div class="header-bar">
 		<h1 class="logo"><a href="/">K</a></h1>
 		<ul class="slider-menu">
-			<a href="/articles"><li>Статии</li></a>
+			<a href="/articles"><li>Статьи</li></a>
 		</ul>
         <ul class="slider-menu">
 			<?php if (WebToken::checkToken()):?>

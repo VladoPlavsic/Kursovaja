@@ -20,7 +20,8 @@ class WebToken{
             return false;
         $payload = self::decodeToken($_COOKIE["jwt"]);
         $response = Database::executeQuery("SELECT check_if_user_exists('".$payload['username']."','".$payload['email']."')");
-        return mysqli_fetch_array($response)[0];
+        $re = mysqli_fetch_array($response);
+        return $re[0];
     }
 
     public static function checkIfAdmin(){
@@ -28,7 +29,8 @@ class WebToken{
             return false;
         $payload = self::decodeToken($_COOKIE["jwt"]);
         $response = Database::executeQuery("call check_if_admin('".$payload['username']."')");
-        return mysqli_fetch_array($response)[0];
+        $re = mysqli_fetch_array($response);
+        return $re[0];
     }
 
 }

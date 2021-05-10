@@ -5,7 +5,8 @@ $errors = array();
 // Incldue environment
 include(__DIR__.'/../Modules/DotEnv.php');
 use DevCoder\DotEnv;
-(new DotEnv(__DIR__ . '/../.env'))->load();
+$env = new DotEnv(__DIR__ . '/../.env');
+$env->load();
 
 // Include router class
 include(__DIR__.'/../Modules/Router.php');
@@ -65,7 +66,8 @@ Route::add('/articles',function(){
 
 // Get article
 Route::add("/articles&orderNum=([0-9]*)", function($orderNum){
-    if(!mysqli_fetch_array(Database::executeQuery("SELECT check_article_exists(".$orderNum.")"))[0])
+    $exists = mysqli_fetch_array(Database::executeQuery("SELECT check_availableArticleExists(".$orderNum.")"));
+    if(!$exists[0])
         echo "404";
     else
         include_once Route::getStaticFilesFolder().'/Public/article.php';
@@ -93,8 +95,8 @@ Route::add("/availableArticles", function(){
 
 Route::add("/editArticle", function(){
     if(WebToken::checkIfAdmin()){
-        $exists = mysqli_fetch_array(Database::executeQuery("SELECT check_article_exists(".$_POST['orderNum'].")"))[0];
-        if ($exists){
+        $exists = mysqli_fetch_array(Database::executeQuery("SELECT check_article_exists(".$_POST['orderNum'].")"));
+        if ($exists[0]){
             Database::executeQuery("call update_article(".$_POST['orderNum'].", '".$_POST['editor']."')");
         }else{
             Database::executeQuery("call add_article(".$_POST['orderNum'].", '".$_POST['editor']."')");

@@ -37,7 +37,8 @@ class Database{
         self::connect();
         $response = self::executeQuery("call get_article(".$orderNum.")");
         self::disconnect();
-        return mysqli_fetch_array($response)[1];
+        $re = mysqli_fetch_array($response);
+        return $re[1];
     }
 }
 ?>

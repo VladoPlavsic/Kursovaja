@@ -84,6 +84,19 @@ END $$;
 DELIMITER ;
 
 /**/
+DELIMITER $$
+CREATE OR REPLACE FUNCTION check_availableArticleExists(i_orderNum INT)
+RETURNS INT
+BEGIN
+DECLARE count_ INT;
+
+SELECT COUNT(*) INTO count_ FROM availableArticles WHERE orderNum = i_orderNum;
+RETURN count_;
+
+END$$
+DELIMITER ;
+
+/**/
 CREATE TABLE articles (
     id INT NOT NULL,
     content TEXT,
