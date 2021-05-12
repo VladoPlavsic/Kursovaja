@@ -2,7 +2,11 @@
 html, body {
 	height: 100vh;
 	margin: 0;
-	background: linear-gradient(to bottom, #f34, #725);
+	background: linear-gradient(to bottom, #f34, #725) no-repeat fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .container {
